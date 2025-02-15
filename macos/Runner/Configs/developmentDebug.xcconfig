@@ -1,0 +1,7 @@
+#include "../../Flutter/developmentDebug.xcconfig"
+#include "Warnings.xcconfig"
+
+FLUTTER_TARGET=lib/main_development.dart
+ASSET_PREFIX=development
+BUNDLE_NAME=Shopping dev
+BUNDLE_DISPLAY_NAME=Shopping dev
