@@ -1,9 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
-import '../flavors.dart';
+import 'package:lrl_shopping/app/flavors.dart';
+
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
