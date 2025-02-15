@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667351107041",
+    "project_id": "lecommerce-c8bf9",
+    "storage_bucket": "lecommerce-c8bf9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667351107041:android:12cf99a8f80476f3acfea0",
+        "android_client_info": {
+          "package_name": "com.majharulDev.shoppingDev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJR-D9Gq8Gjf1lQ6v8rRKZHUszRZ4H_wU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

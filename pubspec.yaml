@@ -10,11 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  # Required for initializing Firebase in Flutter
+  firebase_core: ^3.11.0
+  # Helps track and report app crashes in real-time
+  firebase_crashlytics: ^4.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  # Generates Android & iOS launcher icons
   flutter_launcher_icons: ^0.13.1
   # for different flavor integration
   flutter_flavorizr: ^2.2.3

@@ -3,6 +3,6 @@ import '../flavors.dart';
 import '../../main.dart' as runner;
 
 Future<void> main() async {
-  Flavors.appFlavor = Flavor.dev;
+  Flavors.appFlavor = FlavorType.dev;
   await runner.main();
 }
