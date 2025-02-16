@@ -20,6 +20,7 @@ class MyHomePage extends StatelessWidget {
           },
           child: Text(
             'Hello ${Flavors.title}',
+            style: TextStyle(),
           ),
         ),
       ),
