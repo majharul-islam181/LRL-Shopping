@@ -10,17 +10,31 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  
   # Required for initializing Firebase in Flutter
   firebase_core: ^3.11.0
   # Helps track and report app crashes in real-time
   firebase_crashlytics: ^4.3.2
+
+  # for fonts
   google_fonts: ^6.2.1
+  # for localization
   easy_localization: ^3.0.7+1
+  # Functional programming things
+  dartz: ^0.10.1
+  # for state management
+  flutter_bloc: ^9.0.0
+  # Value equality
+  equatable: ^2.0.7
+  # Remote API
+  dio: ^5.8.0+1
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+
   # Generates Android & iOS launcher icons
   flutter_launcher_icons: ^0.13.1
   # for different flavor integration
@@ -29,10 +43,12 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
 
+  assets:
+    - assets/icons/
+    - assets/language/
+
+    
   # fonts:
   #   - family: Schyler
   #     fonts:
