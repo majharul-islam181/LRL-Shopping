@@ -7,7 +7,7 @@ class ApiClient {
   ApiClient() {
     dio = Dio(
       BaseOptions(
-        baseUrl: '',
+        baseUrl: 'https://demo.limerickbd.com/backend/public/api/',
         headers: {'Content-Type': 'application/json'},
       ),
     );

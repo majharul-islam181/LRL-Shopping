@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:lrl_shopping/app/app.dart';
 import 'package:lrl_shopping/app/firebase_options.dart';
 import 'package:lrl_shopping/app/flavors.dart';
+import 'package:lrl_shopping/core/injection/dependency_injection.dart' as di;
 
 
 FutureOr<void> main() async {
    WidgetsFlutterBinding.ensureInitialized();
    await _firebaseInit();
+   di.init();
   runApp(const App());
 }
 
