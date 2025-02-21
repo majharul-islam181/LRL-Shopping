@@ -4,7 +4,7 @@ import '../../../../core/services/storage_service.dart';
 import '../../domain/usecase/login_usecase.dart';
 import 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LoginCubit extends Cubit<LoginState> { 
   final LoginUseCase loginUseCase;
   final StorageService storageService;
 
@@ -27,13 +27,17 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  String _mapFailureToMessage(Failure failure) {
-    if (failure is ServerFailure) {
-      return failure.error;
-    } else if (failure is ApiFailure) {
-      return failure.error;
-    } else {
-      return 'Unexpected error occurred.';
-    }
+String _mapFailureToMessage(Failure failure) {
+  if (failure is ServerFailure) {
+    return failure.error;
+  } else if (failure is ApiFailure) {
+    return failure.error;
+  } else if (failure is DioFailure) {
+    return failure.error; // Extracted from DioFailure
+  } else {
+    return 'Unexpected error occurred.';
   }
+}
+
+
 }
