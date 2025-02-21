@@ -38,7 +38,7 @@ class AppLanguage {
   static final all = [
     const Locale('en'),
   ];
-  static const path = 'assets/languages';
+  static const path = 'assets/language';
   static const english = Locale('en', '');
   static const englishCode = 'en';
 }

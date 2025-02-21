@@ -27,6 +27,13 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
+
+  Future<void> logoutUser() async {
+  await storageService.clearData();
+  emit(LoginInitial()); // This triggers the BlocListener in HomePage
+}
+
+
 String _mapFailureToMessage(Failure failure) {
   if (failure is ServerFailure) {
     return failure.error;
