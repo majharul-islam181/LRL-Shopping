@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' as el;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lrl_shopping/core/blocs/theme_cubit.dart';
 import 'package:lrl_shopping/feature/auth/presentation/pages/splash_page.dart';
 import '../core/theme/theme.dart';
 import '../feature/auth/presentation/cubit/login_cubit.dart';
@@ -20,24 +21,31 @@ class App extends StatelessWidget {
         BlocProvider<LoginCubit>(
           create: (_) => di.sl<LoginCubit>(), 
         ),
+          BlocProvider<ThemeCubit>(
+          create: (_) => ThemeCubit(),
+        ),
       ],
-      child: Builder(
-        builder: (context) {
-          return Directionality( 
-            textDirection: ui.TextDirection.ltr, 
-            child: _flavorBanner(
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: Flavors.title,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
-                locale: context.locale, 
-                supportedLocales: context.supportedLocales,
-                localizationsDelegates: context.localizationDelegates,
-                home: const SplashScreen(),
-              ),
-            ),
-          );
+      child: BlocBuilder<ThemeCubit, ThemeData>(
+        builder: (context, theme) {
+          return Builder(
+              builder: (context) {
+                return Directionality( 
+                  textDirection: ui.TextDirection.ltr, 
+                  child: _flavorBanner(
+                    child: MaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      title: Flavors.title,
+                      theme: theme,
+                      // darkTheme: AppTheme.darkTheme,
+                      locale: context.locale, 
+                      supportedLocales: context.supportedLocales,
+                      localizationsDelegates: context.localizationDelegates,
+                      home: const SplashScreen(),
+                    ),
+                  ),
+                );
+              },
+            );
         },
       ),
     );

@@ -4,7 +4,7 @@ import 'package:lrl_shopping/core/language/generated/locale_keys.g.dart';
 import 'package:lrl_shopping/feature/auth/domain/entites/user.dart';
 
 class DashboardPage extends StatelessWidget {
-  final User user; // ✅ Receive user data from HomeBottomNavBar
+  final User user; 
 
   const DashboardPage({super.key, required this.user});
 
@@ -18,7 +18,7 @@ class DashboardPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              LocaleKeys.title.tr(), // ✅ Uses translation
+              LocaleKeys.title.tr(), 
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
