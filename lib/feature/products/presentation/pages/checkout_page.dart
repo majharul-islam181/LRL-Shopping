@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lrl_shopping/core/services/storage_service.dart';
 import 'package:lrl_shopping/feature/products/data/models/product_model.dart';
@@ -71,7 +72,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Review Your Order")),
+      appBar: AppBar(title: Text("review_order".tr())),
       body: widget.selectedProducts.isEmpty
           ? const Center(child: Text("No products selected."))
           : Column(
@@ -176,7 +177,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 Column(
                   children: [
                     Text(
-                      "Total Price: \$${getTotalPrice().toStringAsFixed(2)}",
+                      "total_price: \$${getTotalPrice().toStringAsFixed(2)}",
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -187,7 +188,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         backgroundColor:
                             hasAvailableStock() ? Colors.blue : Colors.grey,
                       ),
-                      child: const Text("Confirm Order"),
+                      child: Text("confirm_order".tr()),
                     ),
                   ],
                 ),

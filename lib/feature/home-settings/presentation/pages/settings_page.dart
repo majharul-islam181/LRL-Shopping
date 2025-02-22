@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lrl_shopping/core/language/app_language.dart';
 import 'package:lrl_shopping/feature/auth/domain/entites/user.dart';
 import 'package:lrl_shopping/feature/auth/presentation/cubit/login_cubit.dart';
 import 'package:lrl_shopping/feature/home-settings/presentation/widgets/setting_title.dart';
@@ -17,7 +18,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Settings".tr(),
+          "settings".tr(),
           style: GoogleFonts.roboto(fontSize: 25),
         ),
         centerTitle: true,
@@ -40,11 +41,11 @@ class SettingsPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Name: ${user.name}",
+                    Text("${"name".tr()}: ${user.name}",
                         style: const TextStyle(fontSize: 16)),
-                    Text("Email: ${user.email}",
+                    Text("${"email".tr()}: ${user.email}".tr(),
                         style: const TextStyle(fontSize: 16)),
-                    Text("Mobile: ${user.mobile}",
+                    Text("${"mobile".tr()}: ${user.mobile}",
                         style: const TextStyle(fontSize: 16)),
                   ],
                 ),
@@ -52,26 +53,26 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          _buildSectionTitle("General".tr(), context),
+          _buildSectionTitle("general".tr(), context),
           SettingsTile(
             icon: Icons.language,
-            title: "Language".tr(),
-            subtitle: "Choose your preferred language".tr(),
-            onTap: () {},
+            title: "language".tr(),
+            subtitle: "choose_language".tr(),
+            onTap: () => _showLanguageDialog(context),
             iconColor: iconColor,
           ),
           const SizedBox(height: 20),
-          _buildSectionTitle("Appearance".tr(), context),
+          _buildSectionTitle("appearance".tr(), context),
           BlocBuilder<ThemeCubit, ThemeData>(
             builder: (context, theme) {
               return SettingsTile(
                 icon: theme.brightness == Brightness.dark
                     ? Icons.dark_mode
                     : Icons.light_mode,
-                title: "Dark Mode".tr(),
+                title: "dark_mode".tr(),
                 subtitle: theme.brightness == Brightness.dark
-                    ? "Currently enabled".tr()
-                    : "Currently disabled".tr(),
+                    ? "currently_enabled".tr()
+                    : "currently_disabled".tr(),
                 onTap: () => context.read<ThemeCubit>().toggleTheme(),
                 trailing: Switch(
                   value: theme.brightness == Brightness.dark,
@@ -84,11 +85,11 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           const SizedBox(height: 20),
-          _buildSectionTitle("Account".tr(), context),
+          _buildSectionTitle("account".tr(), context),
           SettingsTile(
             icon: Icons.logout,
-            title: "Logout".tr(),
-            subtitle: "Sign out of your account".tr(),
+            title: "logout".tr(),
+            subtitle: "sign_out".tr(),
             onTap: () => context.read<LoginCubit>().logoutUser(),
             iconColor: iconColor,
           ),
@@ -109,5 +110,39 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showLanguageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Select Language".tr()),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: const Text("English"),
+                onTap: () {
+                  _changeLanguage(context, Language.english);
+                },
+              ),
+              ListTile(
+                title: const Text("বাংলা"),
+                onTap: () {
+                  _changeLanguage(context, Language.bengali);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // 🔥 Function to Change Language
+  void _changeLanguage(BuildContext context, Language language) {
+    context.setLocale(language.locale);
+    Navigator.pop(context);
   }
 }

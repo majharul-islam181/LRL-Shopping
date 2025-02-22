@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lrl_shopping/feature/products/presentation/cubit/product_cubit.dart';
@@ -62,7 +63,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Product List")),
+      appBar: AppBar(title: Text("products_list".tr())),
       body: Column(
         children: [
           Padding(
@@ -71,7 +72,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               controller: _searchController,
               onChanged: _filterProducts,
               decoration: InputDecoration(
-                hintText: "Search products...",
+                hintText: "search".tr(),
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -106,7 +107,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       ),
                       title: Text(product.name),
                       subtitle: Text(
-                          "Price: \$${product.price} | Stock: ${product.stock}"),
+                          "${"price".tr()}: \$${product.price} | ${"stock".tr()}: ${product.stock}"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -147,7 +148,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   ),
                 );
               },
-              child: const Text("View Busket"),
+              child: Text("view_busket".tr()),
             )
           : const SizedBox.shrink(),
     );

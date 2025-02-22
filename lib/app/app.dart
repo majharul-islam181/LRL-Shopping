@@ -4,15 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lrl_shopping/core/blocs/theme_cubit.dart';
 import 'package:lrl_shopping/core/injection/dependency_injection.dart';
 import 'package:lrl_shopping/feature/auth/presentation/pages/splash_page.dart';
-import 'package:lrl_shopping/feature/products/data/product_api.dart';
 import 'package:lrl_shopping/feature/products/domain/product_repository.dart';
 import 'package:lrl_shopping/feature/products/presentation/cubit/product_cubit.dart';
 import '../feature/auth/presentation/cubit/login_cubit.dart';
 import 'flavors.dart';
 import 'package:lrl_shopping/core/injection/dependency_injection.dart' as di;
 import 'package:easy_localization/easy_localization.dart';
-import 'dart:ui' as ui; 
-
+import 'dart:ui' as ui;
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -22,17 +20,13 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginCubit>(
-          create: (_) => di.sl<LoginCubit>(), 
+          create: (_) => di.sl<LoginCubit>(),
         ),
-          BlocProvider<ThemeCubit>(
+        BlocProvider<ThemeCubit>(
           create: (_) => ThemeCubit(),
         ),
-        // BlocProvider<ProductCubit>(
-        //   create: (_) => di.sl<ProductCubit>(), 
-        // ),
-BlocProvider<ProductCubit>(
+        BlocProvider<ProductCubit>(
           create: (_) {
-            print("🟢 Creating ProductCubit in MultiBlocProvider...");
             return ProductCubit(productRepository: sl<ProductRepository>());
           },
         ),
@@ -40,24 +34,23 @@ BlocProvider<ProductCubit>(
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, theme) {
           return Builder(
-              builder: (context) {
-                return Directionality( 
-                  textDirection: ui.TextDirection.ltr, 
-                  child: _flavorBanner(
-                    child: MaterialApp(
-                      debugShowCheckedModeBanner: false,
-                      title: Flavors.title,
-                      theme: theme,
-                      // darkTheme: AppTheme.darkTheme,
-                      locale: context.locale, 
-                      supportedLocales: context.supportedLocales,
-                      localizationsDelegates: context.localizationDelegates,
-                      home: const SplashScreen(),
-                    ),
+            builder: (context) {
+              return Directionality(
+                textDirection: ui.TextDirection.ltr,
+                child: _flavorBanner(
+                  child: MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    title: Flavors.title,
+                    theme: theme,
+                    locale: context.locale,
+                    supportedLocales: context.supportedLocales,
+                    localizationsDelegates: context.localizationDelegates,
+                    home: const SplashScreen(),
                   ),
-                );
-              },
-            );
+                ),
+              );
+            },
+          );
         },
       ),
     );
@@ -68,8 +61,8 @@ BlocProvider<ProductCubit>(
     bool show = true,
   }) {
     return show
-        ? Directionality( 
-           textDirection: ui.TextDirection.ltr, 
+        ? Directionality(
+            textDirection: ui.TextDirection.ltr,
             child: Banner(
               location: BannerLocation.topStart,
               message: Flavors.name,

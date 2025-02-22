@@ -39,7 +39,7 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
-            label: "Settings".tr(),
+            label: "settings".tr(),
           ),
         ],
       ),
