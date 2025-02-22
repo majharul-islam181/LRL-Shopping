@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lrl_shopping/feature/auth/domain/entites/user.dart';
 import 'package:lrl_shopping/feature/auth/presentation/cubit/login_cubit.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/widgets/setting_title.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/widgets/setting_title.dart';
 import '../../../../core/blocs/theme_cubit.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  final User user;
+  const SettingsPage({super.key, required this.user});
+
   @override
   Widget build(BuildContext context) {
     final iconColor = Theme.of(context).iconTheme.color;
@@ -37,10 +40,12 @@ class SettingsPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("John Doe",
-                        style: Theme.of(context).textTheme.headlineMedium),
-                    Text("johndoe@example.com",
-                        style: Theme.of(context).textTheme.bodyMedium),
+                    Text("Name: ${user.name}",
+                        style: const TextStyle(fontSize: 16)),
+                    Text("Email: ${user.email}",
+                        style: const TextStyle(fontSize: 16)),
+                    Text("Mobile: ${user.mobile}",
+                        style: const TextStyle(fontSize: 16)),
                   ],
                 ),
               ],

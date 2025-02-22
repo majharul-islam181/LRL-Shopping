@@ -4,7 +4,7 @@ import '../../../auth/domain/entites/user.dart';
 import '../../../auth/presentation/cubit/login_cubit.dart';
 import '../../../auth/presentation/cubit/login_state.dart';
 import '../../../auth/presentation/pages/login_page.dart';
-import '../../../home/presentation/pages/widgets/home_bottom_navbar.dart';
+import '../widgets/home_bottom_navbar.dart';
 import '../../../../core/services/storage_service.dart';
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/home_page.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/pages/home_page.dart';
 import '../cubit/login_cubit.dart';
 import '../cubit/login_state.dart';
 

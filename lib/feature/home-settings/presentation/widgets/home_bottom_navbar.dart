@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:lrl_shopping/core/language/generated/locale_keys.g.dart';
 import 'package:lrl_shopping/feature/auth/domain/entites/user.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/dashboard_page.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/setting_page.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/pages/dashboard_page.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/pages/settings_page.dart';
 import 'package:lrl_shopping/feature/products/presentation/pages/product_list_page.dart';
 
 class HomeBottomNavBar extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
       body: _currentIndex == 0
           // ? DashboardPage(user: widget.user)
           ? const ProductListScreen()
-          : const SettingsPage(),
+          : SettingsPage(user: widget.user),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {

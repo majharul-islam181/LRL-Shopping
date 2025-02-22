@@ -60,13 +60,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:lrl_shopping/feature/auth/presentation/cubit/login_cubit.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/home_page.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/pages/home_page.dart';
 import 'package:lrl_shopping/feature/auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:lrl_shopping/feature/auth/presentation/cubit/login_cubit.dart';
-import 'package:lrl_shopping/feature/home/presentation/pages/home_page.dart';
+import 'package:lrl_shopping/feature/home-settings/presentation/pages/home_page.dart';
 import 'package:lrl_shopping/feature/auth/presentation/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
