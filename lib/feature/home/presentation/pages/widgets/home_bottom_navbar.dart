@@ -4,8 +4,10 @@ import 'package:lrl_shopping/core/language/generated/locale_keys.g.dart';
 import 'package:lrl_shopping/feature/auth/domain/entites/user.dart';
 import 'package:lrl_shopping/feature/home/presentation/pages/dashboard_page.dart';
 import 'package:lrl_shopping/feature/home/presentation/pages/setting_page.dart';
+import 'package:lrl_shopping/feature/products/presentation/pages/product_list_page.dart';
+
 class HomeBottomNavBar extends StatefulWidget {
-  final User user; 
+  final User user;
 
   const HomeBottomNavBar({super.key, required this.user});
 
@@ -20,7 +22,8 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _currentIndex == 0
-          ? DashboardPage(user: widget.user) 
+          // ? DashboardPage(user: widget.user)
+          ? const ProductListScreen()
           : const SettingsPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

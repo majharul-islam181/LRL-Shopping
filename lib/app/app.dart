@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' as el;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lrl_shopping/core/blocs/theme_cubit.dart';
+import 'package:lrl_shopping/core/injection/dependency_injection.dart';
 import 'package:lrl_shopping/feature/auth/presentation/pages/splash_page.dart';
-import '../core/theme/theme.dart';
+import 'package:lrl_shopping/feature/products/data/product_api.dart';
+import 'package:lrl_shopping/feature/products/domain/product_repository.dart';
+import 'package:lrl_shopping/feature/products/presentation/cubit/product_cubit.dart';
 import '../feature/auth/presentation/cubit/login_cubit.dart';
 import 'flavors.dart';
 import 'package:lrl_shopping/core/injection/dependency_injection.dart' as di;
@@ -23,6 +26,15 @@ class App extends StatelessWidget {
         ),
           BlocProvider<ThemeCubit>(
           create: (_) => ThemeCubit(),
+        ),
+        // BlocProvider<ProductCubit>(
+        //   create: (_) => di.sl<ProductCubit>(), 
+        // ),
+BlocProvider<ProductCubit>(
+          create: (_) {
+            print("🟢 Creating ProductCubit in MultiBlocProvider...");
+            return ProductCubit(productRepository: sl<ProductRepository>());
+          },
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeData>(

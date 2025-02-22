@@ -4,7 +4,7 @@ import '../../../../core/services/storage_service.dart';
 import '../../domain/usecase/login_usecase.dart';
 import 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> { 
+class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase loginUseCase;
   final StorageService storageService;
 
@@ -20,7 +20,9 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginError(message: _mapFailureToMessage(failure)));
       },
       (user) async {
-        await storageService.saveToken(user.id.toString());
+        // ✅ Retrieve Token from API Response
+        final token = user.token; // Fix: Extract token from response
+        await storageService.saveToken(token);
         await storageService.saveUserData(user);
         emit(LoginSuccess(user: user));
       },
@@ -30,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> logoutUser() async {
   await storageService.clearData();
-  emit(LoginInitial()); // This triggers the BlocListener in HomePage
+  emit(LoginInitial()); 
 }
 
 
@@ -40,7 +42,7 @@ String _mapFailureToMessage(Failure failure) {
   } else if (failure is ApiFailure) {
     return failure.error;
   } else if (failure is DioFailure) {
-    return failure.error; // Extracted from DioFailure
+    return failure.error; 
   } else {
     return 'Unexpected error occurred.';
   }

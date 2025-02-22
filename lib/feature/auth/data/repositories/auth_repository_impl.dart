@@ -31,6 +31,7 @@ class AuthRepositoryImpl implements AuthRepository {
         name: loginResponse.data.name,
         email: loginResponse.data.email,
         mobile: loginResponse.data.mobile,
+         token: loginResponse.token, // ✅ Extract Token
       );
 
       return Right(user);
