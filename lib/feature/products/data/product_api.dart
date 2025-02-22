@@ -11,25 +11,23 @@ class ProductApi {
   ProductApi({required this.apiClient, required this.storageService});
 
   Future<List<ProductModel>> fetchProducts() async {
-    print("🔹 ProductApi: fetchProducts() called...");
-    final String? token = await storageService.getToken();
-     print("✅ Bearer Token: $token");
+    // print("🔹 ProductApi: fetchProducts() called...");
+    // final String? token = await storageService.getToken();
+    //   print("✅ Bearer Token: $token");
 
     try {
-      // ✅ Retrieve token from storage
       final String? token = await storageService.getToken();
 
       if (token == null) {
-        throw Exception("❌ No authentication token found. Please log in.");
+        throw Exception(" No authentication token found. Please log in.");
       }
 
       final response = await apiClient.dio.get(
         '/fg-with-stock',
         options: Options(
-           headers: {"Authorization": "Bearer $token"}, ),
+          headers: {"Authorization": "Bearer $token"},
+        ),
       );
-
-      // ✅ Debugging Output
       if (kDebugMode) {
         print("✅ API Request: ${apiClient.dio.options.baseUrl}/fg-with-stock");
         print("✅ Bearer Token: $token");
@@ -45,14 +43,21 @@ class ProductApi {
       }
     } on DioException catch (e) {
       if (e.response != null) {
-        print("❌ API Error (${e.response!.statusCode}): ${e.response!.data}");
-        throw Exception("API Error (${e.response!.statusCode}): ${e.response!.data}");
+        if (kDebugMode) {
+          print("❌ API Error (${e.response!.statusCode}): ${e.response!.data}");
+        }
+        throw Exception(
+            "API Error (${e.response!.statusCode}): ${e.response!.data}");
       } else {
-        print("❌ Network Error: ${e.message}");
+        if (kDebugMode) {
+          print("❌ Network Error: ${e.message}");
+        }
         throw Exception("Network Error: ${e.message}");
       }
     } catch (e) {
-      print("❌ Unexpected Error: $e");
+      if (kDebugMode) {
+        print("❌ Unexpected Error: $e");
+      }
       throw Exception("Unexpected Error: $e");
     }
   }
