@@ -6,6 +6,7 @@
     "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
+    "login_sc" : "Login Successful!",
     "email": "Email",
     "password": "Password",
     "welcome": "Welcome",

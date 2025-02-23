@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lrl_shopping/feature/home-settings/presentation/pages/home_page.dart';
@@ -13,15 +14,14 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(title:  Text("login".tr())),
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Login Successful!")));
+                 SnackBar(content: Text("login_sc".tr())));
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HomePage()));
-            // Navigate to next screen
+                context, MaterialPageRoute(builder: (_) => const HomePage()));
           } else if (state is LoginError) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.message)));
@@ -33,10 +33,10 @@ class LoginPage extends StatelessWidget {
             children: [
               TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(labelText: "Email")),
+                  decoration:  InputDecoration(labelText: "email".tr())),
               TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(labelText: "Password"),
+                  decoration:  InputDecoration(labelText: "password".tr()),
                   obscureText: true),
               const SizedBox(height: 20),
               BlocBuilder<LoginCubit, LoginState>(
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                           },
                     child: state is LoginLoading
                         ? const CircularProgressIndicator()
-                        : const Text("Login"),
+                        :  Text("login".tr()),
                   );
                 },
               ),
