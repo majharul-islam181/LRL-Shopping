@@ -14,12 +14,12 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:  Text("login".tr())),
+      appBar: AppBar(title: Text("login".tr())),
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(content: Text("login_sc".tr())));
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text("login_sc".tr())));
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => const HomePage()));
           } else if (state is LoginError) {
@@ -33,10 +33,10 @@ class LoginPage extends StatelessWidget {
             children: [
               TextField(
                   controller: emailController,
-                  decoration:  InputDecoration(labelText: "email".tr())),
+                  decoration: InputDecoration(labelText: "email".tr())),
               TextField(
                   controller: passwordController,
-                  decoration:  InputDecoration(labelText: "password".tr()),
+                  decoration: InputDecoration(labelText: "password".tr()),
                   obscureText: true),
               const SizedBox(height: 20),
               BlocBuilder<LoginCubit, LoginState>(
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                           },
                     child: state is LoginLoading
                         ? const CircularProgressIndicator()
-                        :  Text("login".tr()),
+                        : Text("login".tr()),
                   );
                 },
               ),
