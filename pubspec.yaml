@@ -28,8 +28,11 @@ dependencies:
   equatable: ^2.0.7
   # Remote API
   dio: ^5.8.0+1
+  # 📜 Logs network requests in a readable format
   pretty_dio_logger: ^1.4.0
+  # 🛠️ Dependency injection for better code organization
   get_it: ^8.0.3
+  # 🔒 Stores user preferences
   shared_preferences: ^2.5.2
 
 
@@ -37,6 +40,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  # 🏷️ Mocks dependencies for testing
   mockito: ^5.4.4
 
   # Generates Android & iOS launcher icons
@@ -44,6 +48,7 @@ dev_dependencies:
   # for different flavor integration
   flutter_flavorizr: ^2.2.3
   build_runner: ^2.4.13
+  # 🏆 Unit & widget testing for BLoC state management
   bloc_test: ^10.0.0
 
 flutter:
